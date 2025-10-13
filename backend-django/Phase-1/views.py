@@ -144,36 +144,43 @@ from rest_framework import mixins,generics,viewsets
 
 
 # Viewsets -> part 1.....................................................................
-class customer(viewsets.ViewSet):
-    def list(self, request):
-        data = Customer.objects.all()
-        serializer = CustomerSerializer(data, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+# class customer(viewsets.ViewSet):
+#     def list(self, request):
+#         data = Customer.objects.all()
+#         serializer = CustomerSerializer(data, many=True)
+#         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def create(self, request):
-        serializer = CustomerSerializer(data = request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+#     def create(self, request):
+#         serializer = CustomerSerializer(data = request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(status=status.HTTP_400_BAD_REQUEST)
     
-    def retrieve(self, request, pk):
-        data = Customer.objects.get(pk=pk)
-        serializer = CustomerSerializer(data, many=False)
-        return Response(serializer.data,  status=status.HTTP_200_OK)
+#     def retrieve(self, request, pk):
+#         data = Customer.objects.get(pk=pk)
+#         serializer = CustomerSerializer(data, many=False)
+#         return Response(serializer.data,  status=status.HTTP_200_OK)
     
-    def update(self, request, pk):
-        data = Customer.objects.get(pk=pk)
-        serializer = CustomerSerializer(data, request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+#     def update(self, request, pk):
+#         data = Customer.objects.get(pk=pk)
+#         serializer = CustomerSerializer(data, request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_200_OK)
+#         return Response(status=status.HTTP_400_BAD_REQUEST)
     
-    def destroy(self, request, pk):
-        data = Customer.objects.get(pk=pk)
-        data.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+#     def destroy(self, request, pk):
+#         data = Customer.objects.get(pk=pk)
+#         data.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+# Viewsets -> part 2.....................................................................
+class customer(viewsets.ModelViewSet):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
     
 
 
