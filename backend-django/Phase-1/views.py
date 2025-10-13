@@ -135,3 +135,10 @@ class customer(generics.ListAPIView, generics.CreateAPIView):
     serializer_class = CustomerSerializer
 
 
+class get_customer(generics.RetrieveAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
+
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+    lookup_field = 'pk' 
+
+
