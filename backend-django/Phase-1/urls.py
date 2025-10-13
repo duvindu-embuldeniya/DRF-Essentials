@@ -23,5 +23,6 @@ urlpatterns = [
     # path('customer/', customer.as_view(), name = 'customer'),
     # path('get_customer/<int:pk>/', get_customer.as_view(), name = 'customer'),
 
-    path('', include(router.urls)),
+    # Viewsets -> part 1.....................................................................
+    path('', include(router.urls)),   #can handkle all 5 methods
 ]
