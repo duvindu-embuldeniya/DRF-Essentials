@@ -129,16 +129,34 @@ from rest_framework import mixins,generics,viewsets
 
 
 # Generics.........................................................................
-class customer(generics.ListAPIView, generics.CreateAPIView):
+# class customer(generics.ListAPIView, generics.CreateAPIView):
 
-    queryset = Customer.objects.all()
-    serializer_class = CustomerSerializer
+#     queryset = Customer.objects.all()
+#     serializer_class = CustomerSerializer
 
 
-class get_customer(generics.RetrieveAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
+# class get_customer(generics.RetrieveAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
 
-    queryset = Customer.objects.all()
-    serializer_class = CustomerSerializer
-    lookup_field = 'pk' 
+#     queryset = Customer.objects.all()
+#     serializer_class = CustomerSerializer
+#     lookup_field = 'pk' 
+
+
+
+# Viewsets -> part 1.....................................................................
+class customer(viewsets.ViewSet):
+    def list(self, request):
+        data = Customer.objects.all()
+        serializer = CustomerSerializer(data, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def create(self, request):
+        serializer = CustomerSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+
 
 
