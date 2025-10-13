@@ -4,7 +4,7 @@ from . views import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('customer', customer, basename='customer')
+router.register('customer', customer, basename='customer') #give customer/<id> to point specific object
 
 urlpatterns = [
     #Function Based Views.............................................................
