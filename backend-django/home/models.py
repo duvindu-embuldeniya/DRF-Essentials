@@ -28,8 +28,8 @@ class Blog(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
     title = models.CharField(max_length=100)
-    total_votes = models.IntegerField()
-    vote_percentage = models.IntegerField()
+    total_votes = models.IntegerField(default=0)
+    vote_percentage = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.title}'
