@@ -3,6 +3,9 @@ from . views import *
 
 urlpatterns = [
     #Function Based Views.................................................................
-    path('customer/', customer, name = 'customer'),
-    path('customer/<int:pk>/', get_customer, name = 'customer'),
+    # path('customer/', customer, name = 'customer'),
+    # path('customer/<int:pk>/', get_customer, name = 'customer'),
+
+    #Class Based Views.................................................................
+    path('customer/', customer.as_view(), name = 'customer'),
 ]
