@@ -1,3 +1,5 @@
+from django.http import Http404
+
 from .serializers import CustomerSerializer
 
 from home.models import Customer
@@ -34,7 +36,7 @@ from rest_framework.views import APIView
 #         return Response(status=status.HTTP_400_BAD_REQUEST)
     
 #     if request.method == 'GET':
-#         serializer = CustomerSerializer(data_point)
+#         serializer = CustomerSerializer(data_point, many=False)
 #         return Response(serializer.data)
 
 #     elif request.method == 'PUT':
@@ -65,3 +67,29 @@ class customer(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
+
+class get_customer(APIView):
+    def get_object(self, pk):
+        try:
+            return Customer.objects.get(pk=pk)
+        except Customer.DoesNotExist:
+            raise Http404
+        
+    def get(self, request, pk):
+        data = self.get_object(pk)
+        serializer = CustomerSerializer(data, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request, pk):
+        data = self.get_object(pk)
+        serializer = CustomerSerializer(data, request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+    def delete(self, request, pk):
+        data = self.get_object(pk)
+        data.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

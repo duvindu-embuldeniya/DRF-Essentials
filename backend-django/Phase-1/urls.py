@@ -8,4 +8,6 @@ urlpatterns = [
 
     #Class Based Views.................................................................
     path('customer/', customer.as_view(), name = 'customer'),
+    path('get_customer/<int:pk>/', get_customer.as_view(), name = 'customer'),
+
 ]
