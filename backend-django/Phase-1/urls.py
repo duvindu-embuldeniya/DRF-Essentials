@@ -12,5 +12,7 @@ urlpatterns = [
 
     # Mixins.........................................................................
     path('customer/', customer.as_view(), name = 'employee'),
+    path('get_customer/<int:pk>/', get_customer.as_view(), name = 'employee'),
+
 
 ]
