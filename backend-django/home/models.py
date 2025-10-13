@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Customers(models.Model):
+class Customer(models.Model):
     customer_id = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     designation = models.CharField(max_length=200)
