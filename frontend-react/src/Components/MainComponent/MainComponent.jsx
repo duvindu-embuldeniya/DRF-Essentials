@@ -1,12 +1,12 @@
 import ButtonComponent from "../ButtonComponent/ButtonComponent"
-import HeaderComponent from "../HeaderComponent/HeaderComponent"
-import FooterComponent from "../FooterComponent/FooterComponent"
+// import HeaderComponent from "../HeaderComponent/HeaderComponent"
+// import FooterComponent from "../FooterComponent/FooterComponent"
 
 const MainComponent = () => {
   return (
     <>
 
-        <HeaderComponent />
+        {/* <HeaderComponent /> */}
 
         <div className='container'>
             <div className='p-5 text-center bg-light-dark rounded'>
@@ -16,13 +16,13 @@ const MainComponent = () => {
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni nulla laborum enim ab impedit adipisci ad aspernatur assumenda culpa maiores ut molestiae dicta, consectetur natus distinctio temporibus exercitationem placeat accusamus.
                 </p>
 
-                <ButtonComponent class='btn-outline-info' text='login' />
+                <ButtonComponent url='/login' class='btn-outline-info' text='login' />
 
 
             </div>
         </div>
 
-        <FooterComponent />
+        {/* <FooterComponent /> */}
 
     </>
   )
