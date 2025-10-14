@@ -23,4 +23,6 @@ urlpatterns = [
 
     path('api/p1/', include('Phase-1.urls')),
     path('api/p2/', include('Phase-2.urls')),
+
+    path('api/p4/', include('Phase-4.urls')),
 ]
