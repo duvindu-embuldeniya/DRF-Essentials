@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('home.urls')),
 
     path('api/p1/', include('Phase-1.urls')),
+    path('api/p2/', include('Phase-2.urls')),
 ]
