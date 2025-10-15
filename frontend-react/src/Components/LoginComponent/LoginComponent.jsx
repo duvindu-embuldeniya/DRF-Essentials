@@ -2,7 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
+import { useContext } from 'react'
+import { AuthContext } from '../AuthProviderComponent/AuthProviderComponent'
 
 
 const LoginComponent = () => {
@@ -12,6 +13,7 @@ const LoginComponent = () => {
   let[loading, setLoading] = useState(false)
   let[error, setError] = useState('')
   const navigate = useNavigate()
+  const{isLogedIn, setIsLogedIn} = useContext(AuthContext)
 
   let f1 = (e) =>{
     setUsername(e.target.value)
@@ -32,6 +34,7 @@ const LoginComponent = () => {
       let response = await axios.post('http://localhost:8000/api/p2/token/', userData)
       localStorage.setItem('accessToken', response.data.access)
       localStorage.setItem('refreshToken', response.data.refresh)
+      setIsLogedIn(true)
       navigate('/')
     }
     catch(error){

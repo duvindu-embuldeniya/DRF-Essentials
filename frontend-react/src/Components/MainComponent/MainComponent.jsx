@@ -1,8 +1,22 @@
 import ButtonComponent from "../ButtonComponent/ButtonComponent"
 // import HeaderComponent from "../HeaderComponent/HeaderComponent"
 // import FooterComponent from "../FooterComponent/FooterComponent"
+import { AuthContext } from "../AuthProviderComponent/AuthProviderComponent"
+import { useContext } from "react"
+import { useNavigate } from "react-router-dom"
 
 const MainComponent = () => {
+
+  const{isLogedIn, setIsLogedIn} = useContext(AuthContext)
+  let navigate = useNavigate()
+
+  let handleLogout = ()=>{
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('refreshToken')
+    setIsLogedIn(false)
+    navigate('/')
+  }
+
   return (
     <>
 
@@ -16,7 +30,10 @@ const MainComponent = () => {
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni nulla laborum enim ab impedit adipisci ad aspernatur assumenda culpa maiores ut molestiae dicta, consectetur natus distinctio temporibus exercitationem placeat accusamus.
                 </p>
 
-                <ButtonComponent url='/login' class='btn-outline-info' text='login' />
+                {isLogedIn && <button onClick={handleLogout} className="btn btn-danger">Logout</button>}
+                {!isLogedIn &&
+                  <ButtonComponent url='/login' class='btn-outline-info' text='login' />
+                }
 
 
             </div>
