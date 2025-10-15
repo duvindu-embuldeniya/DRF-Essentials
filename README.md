@@ -43,7 +43,7 @@ cd backend-django
 ```bash
 python manage.py runserver
 ```
-The backend server will start at [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+✅ The **backend server** will start at [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
 
 ### 9. Open a New Terminal and Navigate to the Frontend (React) Directory
 ```bash
@@ -59,7 +59,9 @@ npm install
 ```bash
 npm run dev
 ```
+✅ The **frontend server** will start at [http://localhost:5173/](http://localhost:5173/) (default React/Vite port).
 
 ---
 
-✅ **Your full-stack project should now be running successfully with both the Django backend and React frontend!**
+🎯 **Your full-stack project should now be running successfully with both the Django backend and React frontend!**
+
