@@ -7,6 +7,9 @@ import RegisterComponent from './Components/RegisterComponent/RegisterComponent'
 import LoginComponent from './Components/LoginComponent/LoginComponent';
 import AuthProviderComponent from './Components/AuthProviderComponent/AuthProviderComponent';
 import DashBoardComponent from './Components/DashBoardComponent/DashBoardComponent';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
+
 
 function App() {
 
@@ -20,11 +23,11 @@ function App() {
 
                 <Route path='/' element={<MainComponent />} />
 
-                <Route path='/register' element={<RegisterComponent />} />
+                <Route path='/register' element={<PublicRoute> <RegisterComponent /> </PublicRoute> } />
 
-                <Route path='/login' element={<LoginComponent />} />
+                <Route path='/login' element={<PublicRoute> <LoginComponent /> </PublicRoute> } />
                 
-                <Route path='/dashboard' element={<DashBoardComponent />} />
+                <Route path='/dashboard' element={<PrivateRoute> <DashBoardComponent /> </PrivateRoute> } />
 
             </Routes>
 
