@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
+import axiosInstance from '../../axisoinstance'
 
 const DashBoardComponent = () => {
 
@@ -8,13 +9,55 @@ const DashBoardComponent = () => {
 
   useEffect(()=>{
 
+    //with axiso......................................................................
+    
+    // let fetchResponseData = async () =>{
+    //     try{
+    //         let response = await axios.get('http://localhost:8000/api/p4/protected-view/',{
+    //             headers:{
+    //                 Authorization: `Bearer ${access_token}`
+    //             }
+    //         })
+    //         console.log("Success -> ", response.data)
+    //     }
+    //     catch(error){
+    //         console.log("Error ->",error.response.data)
+    //     }
+    // }
+    // fetchResponseData()
+    // },[])
+
+
+
+
+
+    //with just axiosinstance (no request,response interceptors)............................
+    
+    // let fetchResponseData = async () =>{
+    //     try{
+    //         let response = await axiosInstance.get('/protected-view/',{
+    //             headers:{
+    //                 Authorization: `Bearer ${access_token}`
+    //             }
+    //         })
+    //         console.log("Success -> ", response.data)
+    //     }
+    //     catch(error){
+    //         console.log("Error ->",error.response.data)
+    //     }
+    // }
+    // fetchResponseData()
+    // },[])
+
+
+
+
+
+    // with request & response interceptors.............................................
+
     let fetchResponseData = async () =>{
         try{
-            let response = await axios.get('http://localhost:8000/api/p4/protected-view/',{
-                headers:{
-                    Authorization: `Bearer ${access_token}`
-                }
-            })
+            let response = await axiosInstance.get('/protected-view/')
             console.log("Success -> ", response.data)
         }
         catch(error){
@@ -24,6 +67,9 @@ const DashBoardComponent = () => {
     fetchResponseData()
   },[])
 
+
+
+  
 
   return (
 
