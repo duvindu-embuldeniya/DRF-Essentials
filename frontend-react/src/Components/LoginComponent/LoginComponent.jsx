@@ -35,7 +35,7 @@ const LoginComponent = () => {
       localStorage.setItem('accessToken', response.data.access)
       localStorage.setItem('refreshToken', response.data.refresh)
       setIsLogedIn(true)
-      navigate('/')
+      navigate('/dashboard')
     }
     catch(error){
       setError("Invalid Credentials..!")

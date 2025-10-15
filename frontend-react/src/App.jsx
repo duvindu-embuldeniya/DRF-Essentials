@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterComponent from './Components/RegisterComponent/RegisterComponent';
 import LoginComponent from './Components/LoginComponent/LoginComponent';
 import AuthProviderComponent from './Components/AuthProviderComponent/AuthProviderComponent';
+import DashBoardComponent from './Components/DashBoardComponent/DashBoardComponent';
 
 function App() {
 
@@ -22,7 +23,8 @@ function App() {
                 <Route path='/register' element={<RegisterComponent />} />
 
                 <Route path='/login' element={<LoginComponent />} />
-
+                
+                <Route path='/dashboard' element={<DashBoardComponent />} />
 
             </Routes>
 
